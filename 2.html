@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>deWalt Dos</title>
+<!-- 	  inspired by..
+   #150: Hey designers, if you only know one thing about JavaScript, this is what I would recommend
+   	 November 23, 2016
+   	 CSS-Tricks 
+   	 goo.gl/fdTRUf
+   	 https://css-tricks.com/video-screencasts/150-hey-designers-know-one-thing-javascript-recommend/
+
+   	 Our app is a gradient background with 1 paragraph.
+   	 When you click the paragraph you change it's background.
+
+	Technical acrobatics shown....
+	1- CSS3 linear gradient syntax.
+	2- defining base and additional class styles
+	3- assigning elements an id
+	4- JS iffys
+    5- addEventListener
+    6- element.classList.toggle()
+
+    and futher would be.
+    1- playing with other gradients.
+    2- more styles and more elements
+    3- i believe this pattern goes away with VDom
+       frameworks.
+    4- iffys will go away as a pattern of controlling
+       scope as more work is done using esModules spec
+       The CSS-Tricks doesn't reference iffys, I won't 
+       again either.  
+    5- it doesn't HAVE to listen for clicks... 
+       there are other options... we can also expand 
+       what the function does.
+    6.  the classList property has other functions besides
+        toggle     
+
+ -->
+<style type="text/css">
+
+
+
+
+/*the background for the whole screen
+  */
+	body {
+	  background: linear-gradient(90deg,grey,deepPink);
+	}
+	/*our paragraph will have the default style and
+	1 more (yay) with different linear gradient settings*/
+	p {
+		font-family: 'Aladin', cursive;
+		font-size: 3em;
+	  background: linear-gradient(90deg,blue,pink,yellow);
+	}
+
+	p.yay {
+		font-family: 'Aladin', cursive;
+	  background: linear-gradient(90deg,yellow,green,blue,red);
+	}
+
+</style>
+<link href="https://fonts.googleapis.com/css?family=Aladin" rel="stylesheet"> 
+</head>
+
+<body>
+<!-- we need to hook into our paragraph so we will 
+give it an id -->
+<p id="ourParagraph">
+	
+goal of this one is to have a gradient on the screen.
+when you clickit, it changes to a different gradient.
+Changing both colors and # of colors
+
+</p>
+
+<p id="second">
+	
+This paragraph's logic is independent from our first. 
+
+
+</p>
+
+
+<script>
+(function app(){
+	
+  let p = document.getElementById("ourParagraph");
+  p.addEventListener("click", function() {
+    p.classList.toggle("yay");
+    })
+
+  let p2 = document.getElementById("second");
+  p2.addEventListener("click", function() {
+    p2.classList.toggle("yay");
+    })
+
+  ;})();
+
+
+</script>
+</body>
+</html>
